@@ -1,0 +1,35 @@
+{
+  "updates": [
+    {
+      "version": null,
+      "date": "2026-11-14",
+      "items": [
+        {
+          "kind": "new",
+          "title": "A cast of five",
+          "text": "Nocturne, Blaze, Frost, Miko and Cloud: drawn as pixel art, each with its own voice."
+        },
+        {
+          "kind": "new",
+          "title": "Phosphor green",
+          "text": "The whole app, the characters and the panel now run on one green LED palette."
+        },
+        {
+          "kind": "new",
+          "title": "Giovanni",
+          "text": "Renamed, rebranded and rebuilt by Tushar Gautam. No update feed: this copy stays yours."
+        },
+        {
+          "kind": "improved",
+          "title": "Ears and capes that move",
+          "text": "The pup\u2019s ears and the fighters\u2019 spikes swing as Giovanni moves across the screen."
+        },
+        {
+          "kind": "removed",
+          "title": "No marketing links",
+          "text": "The About page shows the maker and the license, and nothing else."
+        }
+      ]
+    }
+  ]
+}
