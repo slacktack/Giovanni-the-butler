@@ -22,7 +22,7 @@ Six characters, every one drawn procedurally as pixel art on a single green LED 
 
 | Look | What it is |
 | --- | --- |
-| **Roamie** | The default. The little butler himself |
+| **Buddy** | The default. A tiny glowing pixel critter |
 | **JARVIS** | A glowing sphere of light that ripples as it speaks |
 | **Nocturne** | A night guardian: pointed cowl, mask band, scalloped cape |
 | **Pip** | A bunny: long ears that swing as it moves, a fluffy chest |

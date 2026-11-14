@@ -309,7 +309,7 @@ export function createTools({ allowActions, ui, ask, openUrl, onCommitments, sho
   // The helper's screenshot: one window or app (even behind others), or the screen; shrunk by the helper itself.
   async function handsShot(file, t) {
     const spec = t === 'screen' || t === 'front' || t.startsWith('window:') ? t : `app:${t}`;
-    // Shot straight away, with nothing played on screen (the Roamie only shows a "looking" tag).
+    // Shot straight away, with nothing played on screen (Buddy only shows a "looking" tag).
     // 1568 px is Claude's own cap; a bigger image gets shrunk again and its coordinates drift. The helper shrinks it
     // itself and says the final size; an older helper doesn't, so sips does it here.
     const res = await hands('capture', file, spec, '1568');
@@ -827,7 +827,7 @@ export function createTools({ allowActions, ui, ask, openUrl, onCommitments, sho
     ] : []),
     {
       name: 'draw',
-      description: `Draw on the user's screen while you talk. Your Roamie turns into its cursor and draws with its tip, each beat's marks paced to its spoken line (also shown as a caption). One call holds a whole explanation or walkthrough.
+      description: `Draw on the user's screen while you talk. Your Buddy turns into its cursor and draws with its tip, each beat's marks paced to its spoken line (also shown as a caption). One call holds a whole explanation or walkthrough.
 beats: [{say, marks, wait?}]. say: one short line, under 20 words, spoken and captioned while that beat's marks draw, so your reply after draw never repeats or rephrases it (no restating the steps). Keep 1 to 4 marks per beat, in the order you mention them.
 Places (at, to, tie), best first: {text: the exact words shown on screen} (exact bounds, scrolls to it; target 'screen' searches every app; also words inside paragraphs, text in images or canvases, and a single character, which matches case); add every: true to mark every place that text appears (each letter s, each mention of a word), one mark per place, and within: {x, y, w, h} (screenshot pixels, x, y the centre) to keep to one part of the screen (every s in one sentence); {id} from read_window, for controls without words; {x, y, w, h} pixels in your latest screenshot, for icons, shapes and areas without words: x, y is the thing's centre, and w, h its whole width and height; the box is then fitted to what's really drawn there, so a close guess is enough.
 Which mark: one control they should click: target (with wait 'click' in a walkthrough); one thing to notice: ring (follows its shape; r sets the corner radius); a small spot or icon: point; a region or panel: frame; key words: underline (outdated ones: strike); right or wrong: check, cross; order of steps: num; a name beside something: label (text) or label on any mark; how two things relate: connect (at → to); an odd-shaped group: trace (points); scroll here: scroll (dir); one thing above all else: spotlight (sparingly); something to hover: hover with wait 'hover'; big words: write (text, size).

@@ -11,14 +11,14 @@ assert.deepEqual(looks.map((m) => m[1]), ['classic', 'jarvis', 'nocturne', 'pip'
 const voices = Object.fromEntries(looks.map((m) => [m[1], m[4] ?? (m[3] === 'DEFAULT_VOICE' ? DEFAULT_VOICE : null)]));
 assert.equal(DEFAULT_VOICE, '2680da81de8348a68e1f4dbaa79272f1');
 assert.equal(voices.jarvis, 'e13fa398a7f445a685316a3de6089ce7');
-// Regression: Roamie spoke with JARVIS's voice (the default was JARVIS's ID).
+// Regression: Buddy spoke with JARVIS's voice (the default was JARVIS's ID).
 assert.equal(new Set([DEFAULT_VOICE, ...Object.values(voices).filter(Boolean)]).size, 6, 'every look has its own voice');
 assert.ok(!/config\.fishVoice/.test(side), 'a saved fishVoice (the old JARVIS default) is never used');
 assert.equal(voices.nocturne, 'd8f3b4c1199f4568a767ec54112d2b17');
 assert.equal(voices.pip, '933563129e564b19a115bedd57b7406a');
 assert.equal(voices.miko, 'bf322df2096a46f18c579d0baa36f41d');
 assert.equal(voices.cloud, '84aadb575ed74e9aa44ba7ab8619d1a1');
-assert.equal(voices.classic, DEFAULT_VOICE, 'Roamie is the voice the app ships as its default');
+assert.equal(voices.classic, DEFAULT_VOICE, 'Buddy is the voice the app ships as its default');
 for (const [, id, label] of looks) assert.ok(guide.includes(`['${id}', '${label}']`), `the setup guide offers ${label}`);
 // Each look greets you in its voice when picked, with the words Settings and the setup guide show.
 {
@@ -54,7 +54,7 @@ for (const who of ['nocturne', 'pip', 'miko', 'cloud', 'tushar']) for (const siz
 assert.ok(!looks.some((m) => m[1] === 'tushar'), 'the maker is not a pickable look');
 console.log('looks tests: passed');
 
-// Regression: a selected stage canvas showed as a grey box around the Roamie (WebKit tints selected canvases).
+// Regression: a selected stage canvas showed as a grey box around Buddy (WebKit tints selected canvases).
 assert.match(src('../../../desktop.html'), /canvas \{[^}]*-webkit-user-select: none; user-select: none;[^}]*\}/);
 
 // Regression: after a drawing the Sidekick stopped following the cursor and hopped away from it instead.

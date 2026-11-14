@@ -127,7 +127,7 @@ fn to_onboarding(app: &AppHandle, msg: &Value) {
 
 // ---------- commands called by the page ----------
 
-/// The Roamie came on screen in this overlay (on), or left it: Esc is held only meanwhile.
+/// Buddy came on screen in this overlay (on), or left it: Esc is held only meanwhile.
 #[tauri::command]
 fn esc_watch(app: AppHandle, window: WebviewWindow, on: bool) {
     let label = window.label().to_owned();
@@ -1204,7 +1204,7 @@ fn overlays_stale(built: &[Screen], now: &[Screen], have: usize, roster: usize) 
 }
 
 /// The overlays were built at launch and when the roster changed, and never again. Started while the only display
-/// slept, Giovanni listed no screens, built no overlay and never showed the Roamie (it still talked); a screen plugged
+/// slept, Giovanni listed no screens, built no overlay and never showed Buddy (it still talked); a screen plugged
 /// in or taken away later wasn't followed either. So every 3 s, on the main thread, they're built again when one is
 /// missing or the screens changed.
 fn watch_screens(app: AppHandle) {
@@ -1637,7 +1637,7 @@ fn cli_action(args: &[String]) -> Option<&'static str> {
 }
 
 /// A second launch quit and handed its arguments over (the single-instance plugin). A plain one summons the
-/// Roamie and, on Windows and Linux, opens the panel: Windows 11 hides a new tray icon behind the ^ arrow and many
+/// Buddy and, on Windows and Linux, opens the panel: Windows 11 hides a new tray icon behind the ^ arrow and many
 /// Linux desktops show none, so opening Giovanni again from the Start menu or the app list is the way in.
 fn second_launch(app: &AppHandle, args: &[String]) {
     match cli_action(args) {
@@ -1767,10 +1767,10 @@ mod tests {
         assert!(overlays_stale(&one, &[s(0, 2560)], 1, 1).is_some(), "resolution changed");
         assert!(overlays_stale(&one, &[s(100, 1920)], 1, 1).is_some(), "moved in the arrangement");
         assert!(overlays_stale(&one, &[Screen { scale: 1.0, ..s(0, 1920) }], 1, 1).is_some(), "scale changed");
-        assert_eq!(overlays_stale(&two, &two, 1, 1), None, "two screens and one Roamie: one overlay is all there is");
+        assert_eq!(overlays_stale(&two, &two, 1, 1), None, "two screens and one Buddy: one overlay is all there is");
         assert!(overlays_stale(&two, &two, 1, 2).is_some(), "two Giovanni on two screens and one overlay: build");
-        // build_overlays puts every Roamie on one screen's overlay when there's one screen: counting one overlay per
-        // Roamie there would rebuild every 3 s, forever.
+        // build_overlays puts every Buddy on one screen's overlay when there's one screen: counting one overlay per
+        // Buddy there would rebuild every 3 s, forever.
         assert_eq!(overlays_stale(&one, &one, 1, 2), None, "two Giovanni on one screen: one overlay holds both");
         assert!(overlays_stale(&one, &one, 0, 2).is_some(), "two Giovanni on one screen and no overlay: build");
         assert_eq!(overlays_stale(&one, &one, 0, 0), None, "no Giovanni: no overlay is missing");

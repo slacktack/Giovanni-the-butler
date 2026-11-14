@@ -180,7 +180,7 @@ final class AnalyzerRecognizer: Recognizer {
                 let analyzer = SpeechAnalyzer(modules: [tr])
                 // Lean toward the app's names, as contextualStrings does for the older recogniser ("Hey Giovanni").
                 let context = AnalysisContext()
-                context.contextualStrings[.general] = ["Giovanni", "Roamie", "JARVIS"]
+                context.contextualStrings[.general] = ["Giovanni", "Buddy", "JARVIS"]
                 try? await analyzer.setContext(context)
                 var converter: AVAudioConverter?
                 let inputs = AsyncStream<AnalyzerInput> { out in
@@ -268,7 +268,7 @@ final class LegacyRecognizer: Recognizer {
         if rec.supportsOnDeviceRecognition { req.requiresOnDeviceRecognition = true }
         if #available(macOS 13, *) { req.addsPunctuation = true }
         req.taskHint = .dictation
-        req.contextualStrings = ["Giovanni", "Roamie", "JARVIS"]
+        req.contextualStrings = ["Giovanni", "Buddy", "JARVIS"]
         task = rec.recognitionTask(with: req) { result, error in
             DispatchQueue.main.async {
                 if let result {
@@ -1044,15 +1044,15 @@ if args.contains("--test-wake") {
     check("hey giovanni open safari", "open safari")
     check("Hey, Giovanni.", "")
     check("Hi Giovanni what time is it?", "what time is it?")
-    check("Hey Romies", "")
-    check("Hey Roamie's, open Notes", "open Notes")
-    check("Hey Roamie", "")
-    check("Hey Roomies, play some music", "play some music")
-    check("Hey Romi's", "")
-    check("Hey, Romees.", "")
-    check("Hey Romy's", nil) // three edits away
-    check("Hey roam ies, hello", "hello")
+    check("Hey Givanni, open Notes", "open Notes")
+    check("Hey Giovani", "")
+    check("Hey Gio vanni, play some music", "play some music")
+    check("Hey Gi vanni", "")
+    check("Hey, Giovanny.", "")
+    check("Hey Jovanni", nil) // the guard wants the leading g
+    check("Hey Giancarlo, hello", nil)
     check("That's it. Hey Giovanni, open Mail", "open Mail")
+    check("Giovanni, open Mail", nil) // no greeting in front of it
     check("HEY ROAMIES! What's on today?", "What's on today?")
     check("Hey Giovanni\u{2019} open notes", "open notes")
     check("Hey Ronnie", nil)

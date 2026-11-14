@@ -41,7 +41,7 @@ pub fn log(s: &str) {
     eprintln!("[voice] {s}");
 }
 
-/// The error the app shows when the microphone can't be used; `reason` picks what the Roamie says.
+/// The error the app shows when the microphone can't be used; `reason` picks what Buddy says.
 fn mic_error(e: &MicError) -> Value {
     json!({ "type": "error", "code": "no_input", "reason": e.reason, "message": e.detail })
 }

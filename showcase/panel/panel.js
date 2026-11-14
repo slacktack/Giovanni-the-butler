@@ -232,7 +232,7 @@
   }
 
   // ---------------------------------------------------------------- live Giovanni
-  // The same LED renderer as on the desktop and in the setup guide, drawn small: one in the header (the Roamie
+  // The same LED renderer as on the desktop and in the setup guide, drawn small: one in the header (Buddy
   // you have, reacting to what's going on) and one per look on the Appearance page. One loop draws them all,
   // only while the panel is up and each canvas is on screen.
   // Signal on paper: ink outline, deep teal shadow, teal, phosphor, pale phosphor. The brightest cell is
@@ -247,7 +247,7 @@
     think: (t) => ({ arms: 1, tl: [-0.08, 0.5 + Math.sin(t * 2) * 0.03], tr: [0.98, 0.34], mouth: Math.sin(t * 0.9) > 0.6 ? 'o' : 'flat', brow: 'raised' }),
     concerned: () => ({ arms: 0.7, tl: [-0.45, 0.95], tr: [0.45, 0.95], mouth: 'frown', brow: 'raised' }),
   };
-  // A Roamie on a canvas of w×h CSS px: the one on screen at half scale (the app's unit, every dot half size), so
+  // A character on a canvas of w×h CSS px: the one on screen at half scale (the app's unit, every dot half size), so
   // each size shows its own art (the full face, the small one, the pointer) at its real size next to the others.
   const ZOOM = 0.62, UNIT = 340;
   function liveRoamie(canvas, w, h, { look = 'classic', y = 0.56, form = 'default' } = {}) {
@@ -301,10 +301,10 @@
   }
   requestAnimationFrame(loop);
 
-  // The header's Roamie: your look, reacting to what's going on. A short line beside it when something changes.
+  // The header's Buddy: your look, reacting to what's going on. A short line beside it when something changes.
   // The same size and detail as the look tiles (fewer dots than that and the faces turn to noise).
   const avatar = liveRoamie($('avatar'), 100, 74, { y: 0.55 });
-  const QUIPS = { classic: 'Classic me!', jarvis: 'At your service.', nocturne: 'The night shift is open.', pip: 'Hi there!', miko: 'Hiya!', cloud: 'Good to see you!' };
+  const QUIPS = { classic: 'Your original buddy!', jarvis: 'At your service.', nocturne: 'The night shift is open.', pip: 'Hi there!', miko: 'Hiya!', cloud: 'Good to see you!' };
   let quipTimer = 0, seen = { look: null, update: null, opened: 0 };
   function quip(text, secs = 2.6) {
     const q = $('saying'), n = $('by');
@@ -803,7 +803,7 @@
   });
   window.__panelOpen = (fromBottom = false) => {
     body.classList.remove('shut', 'shutting', 'opening');
-    // The Roamie switches on with the panel, and waves if it's been a while.
+    // Buddy switches on with the panel, and waves if it's been a while.
     if (avatar) { avatar.kit.vanish(null, true); setTimeout(() => { avatar.appear(); if (Date.now() - seen.opened > 10 * 60e3) setTimeout(() => avatar.act('wave'), 500); seen.opened = Date.now(); }, REDUCED.matches ? 0 : 120); }
     body.classList.toggle('from-bottom', !!fromBottom);
     if (REDUCED.matches) return render(null, false);
@@ -875,7 +875,7 @@
       usage: { requests: 14, tokens: 31240 },
       facts: [{ id: 'f1', text: 'Prefers short answers in the morning' }, { id: 'f2', text: 'Working on the Giovanni 1.0 launch, due end of month' }, { id: 'f3', text: 'Has a cat called Miso' }],
       commitments: [{ id: 'c1', text: 'Send the launch email', when: 'Fri 7 Nov, 10:00', overdue: false }, { id: 'c2', text: 'Book the dentist', when: 'Mon 3 Nov, 09:00', overdue: true }],
-      name: 'Roamie', look: 'classic', looks: [['classic', 'Roamie'], ['jarvis', 'JARVIS'], ['nocturne', 'Nocturne'], ['pip', 'Pip'], ['miko', 'Miko'], ['cloud', 'Cloud']],
+      name: 'Buddy', look: 'classic', looks: [['classic', 'Buddy'], ['jarvis', 'JARVIS'], ['nocturne', 'Nocturne'], ['pip', 'Pip'], ['miko', 'Miko'], ['cloud', 'Cloud']],
       size: 'default', sizes: [['default', 'Default'], ['small', 'Small'], ['cursor', 'Cursor']],
       replies: 'voice', fishKey: true, fishModel: 'drama-3', fishFree: false,
       // ?tts=gemini: Gemini as the voice, its key saved.
@@ -922,7 +922,7 @@
     return async (cmd, args) => {
       if (cmd !== 'sidecar_send') return null;
       console.log('[preview] would send', JSON.stringify(args.msg));
-      // A look change comes back as new state, as from the sidecar, so the Roamie's reaction can be seen.
+      // A look change comes back as new state, as from the sidecar, so Buddy's reaction can be seen.
       if (args.msg?.type === 'copy_problem') setTimeout(() => window.__panel({ kind: 'copied', which: 'problem', ok: q.get('copy') !== 'fail' }), 150);
       const id = args.msg?.id ?? '';
       if (id.startsWith('size:')) { s.size = id.slice(5); setTimeout(() => window.__panel({ kind: 'state', state: s }), 120); }

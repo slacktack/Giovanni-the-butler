@@ -1,5 +1,5 @@
-// Giovanni drawing on screen: the Sidekick turns into its cursor and draws hand-drawn teal marks with its tip (the
-// same pen as the user's ⌃⌥ ink: teal, a dark edge so it reads on white, a soft glow), paced to its voice with a
+// Giovanni drawing on screen: the Sidekick turns into its cursor and draws hand-drawn green marks with its tip (the
+// same pen as the user's ⌃⌥ ink: phosphor green, a dark edge so it reads on white, a soft glow), paced to its voice with a
 // caption at the bottom. Screen marks follow each thing's real shape; cards and diagrams go on calm space beside the
 // window and stay until closed. The sidecar (draw.mjs, tools.mjs) sends beats already checked and placed in global
 // screen points; this overlay draws what falls on its own monitor. No model-written code runs here.
@@ -326,7 +326,7 @@
   }
 
   // ---------------------------------------------------------------- names: pixel tags on the calmest free spot
-  // A solid teal tag with a hard drop shadow; it lands in three pixel steps. Names, step numbers and buttons share it.
+  // A solid green tag with a hard drop shadow; it lands in three pixel steps. Names, step numbers and buttons share it.
   const CHIP = (k = 1) => `700 ${11 * k}px ${MONO}`;
   const pillSize = (s) => [Math.round(textW(s, CHIP()) + 22), 23];
   function chip(b, x, y, w, h, str, age, o = {}) {

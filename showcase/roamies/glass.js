@@ -1,5 +1,5 @@
 // The card look shared by the Sidekick's own UI (bubbles, the thinking tag, task tags, the step list): the same
-// stepped corners, dark glass, teal edge, glint and Martian Mono as the drawings' cards (ink.js) and the reminders.
+// stepped corners, dark glass, green edge, glint and Martian Mono as the drawings' cards (ink.js) and the reminders.
 (() => {
   const R = window.Roamie;
   if (!R || typeof document === 'undefined') return;
@@ -100,7 +100,7 @@
     c.restore();
   }
 
-  // A pixel button like the drawings' chips (ink.js): filled is teal with dark ink, otherwise dark glass with a teal
+  // A pixel button like the drawings' chips (ink.js): filled is green with dark ink, otherwise dark glass with a green
   // edge and light ink. focus adds a bright ring, so the keyboard's choice shows; down presses it into its shadow.
   const CHIP_F = `700 11px ${MONO}`, INK_DARK = '#05170a';
   const mix = (a, b, k) => `rgb(${hex(a).map((v, i) => Math.round(v + (hex(b)[i] - v) * k)).join(',')})`;

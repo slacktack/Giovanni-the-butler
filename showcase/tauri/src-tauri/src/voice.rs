@@ -11,13 +11,13 @@ static SUMMON_ID: AtomicU32 = AtomicU32::new(0);
 /// Id of the registered "ask about an area" hotkey.
 static SNAP_ID: AtomicU32 = AtomicU32::new(0);
 static LIST_ID: AtomicU32 = AtomicU32::new(0);
-/// Id of the Esc hotkey, held only while the Roamie is on screen (0 when it isn't).
+/// Id of the Esc hotkey, held only while Buddy is on screen (0 when he isn't).
 static ESC_ID: AtomicU32 = AtomicU32::new(0);
 
 thread_local! {
     // The hotkey manager must live on the main thread; it also owns the current show/hide hotkey.
     static HOTKEYS: RefCell<Option<(global_hotkey::GlobalHotKeyManager, [Option<global_hotkey::hotkey::HotKey>; 3])>> = const { RefCell::new(None) };
-    // The overlays that have the Roamie (or its card, or its ask field) on screen right now.
+    // The overlays that have Buddy (or his card, or his ask field) on screen right now.
     static ESC_UP: RefCell<std::collections::HashSet<String>> = RefCell::new(std::collections::HashSet::new());
 }
 
@@ -193,9 +193,9 @@ pub(crate) fn set_hotkey(slot: usize, accel: &str) -> Result<(), String> {
     })
 }
 
-/// Esc stops the Roamie's answer, or sends it away when it's idle (overlay host.js decides which). Global, so it
-/// works without clicking the Roamie first; that means other apps don't get Esc meanwhile, so it's held only
-/// while some overlay has the Roamie on screen. Must run on the main thread.
+/// Esc stops Buddy's answer, or sends him away when he's idle (overlay host.js decides which). Global, so it
+/// works without clicking Buddy first; that means other apps don't get Esc meanwhile, so it's held only
+/// while some overlay has Buddy on screen. Must run on the main thread.
 pub(crate) fn set_esc(app: &AppHandle, label: &str, on: bool) {
     use global_hotkey::hotkey::{Code, HotKey};
     let any = ESC_UP.with(|up| {

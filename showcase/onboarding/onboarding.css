@@ -418,7 +418,7 @@ input:focus-visible { outline: none; }
 .quip:empty, .quip:empty + .quip-tail { display: none; }
 
 /* ---------- drawing demo (shortcuts step, Mac) ----------
-   The real pen (voice/ink.swift): teal, a dark rim, a soft glow, dimmer until the loop snaps shut. */
+   The real pen (voice/ink.swift): phosphor green, a dark rim, a soft glow, dimmer until the loop snaps shut. */
 .pen-demo { position: fixed; left: 0; top: 0; z-index: 5; pointer-events: none; }
 .pen-demo[hidden] { display: none; }
 .pen-demo svg { position: absolute; left: 0; top: 0; overflow: visible; }

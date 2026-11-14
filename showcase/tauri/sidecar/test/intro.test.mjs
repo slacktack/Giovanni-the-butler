@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { QUESTIONS, opener, openNote, answerNote, answerTurn, wantsSkip, endsChat, questionIn, splitTurn, plain, stripNote } from '../intro.mjs';
 
 assert.equal(QUESTIONS, 4);
-assert.match(opener('Ken'), /^Hi Ken, I'm Roamie!.*four quick questions\. What are you working on these days\?$/);
+assert.match(opener('Sam'), /^Hi Sam, I'm Buddy!.*four quick questions\. What are you working on these days\?$/);
 assert.match(opener('Ken', 'Sarah'), /^Hi Ken, I'm Sarah! /, "each look says its own name");
 assert.ok(!/[—–]| - /.test(opener('Ken')), 'no dashes in the opener');
 assert.match(openNote('Ken'), /word for word.*"\[wave\] Hi Ken/s);
@@ -51,8 +51,8 @@ console.log('intro tests: passed');
   const { DrawArgs, checkDraw } = await import('../draw.mjs');
   assert.equal(goalFrom([{ text: 'Is a YouTuber' }, { text: 'Wants to launch a course by March' }]), 'Wants to launch a course by March');
   assert.equal(goalFrom([{ text: 'Likes coffee' }]), null);
-  const withGoal = tourBeats('Ken', 'Roamie', 'Wants to launch a course by March');
-  const without = tourBeats('Ken', 'Roamie', null, { mac: false });
+  const withGoal = tourBeats('Sam', 'Buddy', 'Wants to launch a course by March');
+  const without = tourBeats('Sam', 'Buddy', null, { mac: false });
   for (const beats of [withGoal, without]) { assert.ok(DrawArgs.safeParse({ beats }).success, 'the tour fits the draw schema'); assert.deepEqual(checkDraw({ beats }), []); }
   assert.equal(withGoal.at(-1).marks[0].kind, 'medal');
   assert.ok(!without.some((b) => b.marks.some((m) => m.kind === 'medal')), 'no goal, no medal');

@@ -58,14 +58,14 @@ final class Wave {
         root.addSublayer(pill)
         let host = CALayer()
         host.frame = root.bounds
-        host.shadowColor = CGColor(srgbRed: 0x78 / 255, green: 1, blue: 0xe2 / 255, alpha: 1)
+        host.shadowColor = CGColor(srgbRed: 0x2b / 255, green: 217 / 255, blue: 0x4a / 255, alpha: 1)
         host.shadowOpacity = 0.8
         host.shadowRadius = 3
         host.shadowOffset = .zero
         root.addSublayer(host)
         let bars: [CALayer] = (0 ..< Self.shape.count).map { _ in
             let b = CALayer()
-            b.backgroundColor = CGColor(srgbRed: 0x78 / 255, green: 1, blue: 0xe2 / 255, alpha: 1)
+            b.backgroundColor = CGColor(srgbRed: 0x2b / 255, green: 217 / 255, blue: 0x4a / 255, alpha: 1)
             host.addSublayer(b)
             return b
         }

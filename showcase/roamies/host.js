@@ -43,7 +43,7 @@
   window.__roamieGame = (on) => { if (!window.Roamie) return; Roamie.game = !!on; if (on) setHot(false); };
 
   // Linux: click-through by region. On Wayland the cursor can't be followed over other apps, so instead of flipping
-  // the whole window as the cursor comes and goes, the page says which rectangles take clicks (the Roamie, its
+  // the whole window as the cursor comes and goes, the page says which rectangles take clicks (Buddy, its
   // bubbles, cards and buttons) and the shell makes them the window's input shape. X11 sessions work the same way.
   if (LINUX) {
     let sent = '', sentAt = 0;
@@ -77,8 +77,8 @@
   const field = document.createElement('input');
   Object.assign(field.style, { position: 'fixed', left: '0', top: '0', width: '1px', height: '1px', opacity: '0', pointerEvents: 'none' });
   // Its name is its look's (the sidecar's LOOKS).
-  const NAMES = { classic: 'Roamie', jarvis: 'JARVIS', nocturne: 'Nocturne', pip: 'Pip', miko: 'Miko', cloud: 'Cloud' };
-  field.setAttribute('aria-label', 'Message for Roamie');
+  const NAMES = { classic: 'Buddy', jarvis: 'JARVIS', nocturne: 'Nocturne', pip: 'Pip', miko: 'Miko', cloud: 'Cloud' };
+  field.setAttribute('aria-label', 'Message for Buddy');
   field.autocomplete = 'off'; field.spellcheck = false;
   document.addEventListener('DOMContentLoaded', () => document.body.appendChild(field));
   if (document.body) document.body.appendChild(field);
@@ -443,7 +443,7 @@
     }
     if (!getAgent()) return;
     if (m.kind === 'agents') {
-      // A launch flies out of the visible Roamie (or from the cursor); the hatch, when there is one, wins.
+      // A launch flies out of the visible Buddy (or from the cursor); the hatch, when there is one, wins.
       const a = getAgent();
       Roamie.agentHome?.event(m.e, { from: a.visible ? [a.pos.x, a.pos.y] : cursor });
       return;
@@ -482,7 +482,7 @@
   // While it's on screen, Esc stops an answer (and the voice), or sends it away when it's idle. The shell holds a
   // global Esc only meanwhile (other apps don't get Esc while it does), so this overlay says when it's up.
   // A drawing counts while it plays and while its marks are still on the screen (frames, loops: Esc is their only
-  // way out once the Roamie has gone). Cards left on screen have their own close button and don't hold Esc. The
+  // way out once Buddy has gone). Cards left on screen have their own close button and don't hold Esc. The
   // reminders card does while it shows (it goes by itself in a few seconds).
   // A voice turn counts too: on macOS the sidekick steps away while the mic is on and until the answer shows.
   const up = () => !!(getAgent()?.visible || ask || Roamie.panel?.isOpen || Roamie.ink?.playing || Roamie.ink?.loose || Roamie.ink?.reminding || hearing || waveTurn || Roamie.voiceOut?.playing());

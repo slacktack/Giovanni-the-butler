@@ -23,7 +23,7 @@ assert.deepEqual(plain(hitRects(() => false, [0, 0, 400, 300])), []);
   assert.deepEqual(plain(hitRects(inRect([120, 60, 96, 48]), [0, 0, 400, 300], 12, 0)), [120, 60, 96, 48], 'no pad: exactly the block');
 }
 
-// A circle (the Roamie) is covered everywhere, and nothing far from it is.
+// A circle (Buddy) is covered everywhere, and nothing far from it is.
 {
   const circle = (x, y) => Math.hypot(x - 200, y - 150) < 40;
   const r = plain(hitRects(circle, [100, 50, 200, 200]));

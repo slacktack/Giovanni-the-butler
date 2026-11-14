@@ -23,7 +23,7 @@
   };
   const sidekick = Roamie.ditherKit({
     id: 'guide', label: 'Guide', matrix: true, pixel: 1.3, glow: 0.55, speed: 80,
-    pal: [[4, 16, 18], [14, 92, 96], [40, 196, 184], [120, 255, 226], [230, 255, 250]],
+    pal: [[17, 17, 17], [10, 94, 44], [22, 150, 66], [43, 217, 74], [178, 245, 190]],
     // busy: no random acts; pose: whatever the current step wants, except while acting something out.
     // calm while a quip is up: the act keeps its gesture but drops its icon, which would sit on the bubble.
     plugin: (kit) => { K = kit; return { busy: () => true, calm: () => !!quipText && clock < quipUntil, pose: () => (clock < actUntil ? null : poseFn?.(clock) ?? null) }; },
@@ -752,7 +752,7 @@
     enter() { keys.render(); aim($('chords')); setTimeout(() => at('keys') && quip(state?.voice ? 'Try talking to me!' : 'Your shortcuts'), 700); },
     leave() { if (keys.recording) keys.stop(); poseFn = null; voice.listening = false; },
   };
-  // Drawing, shown not told: a cursor holding the talk keys circles Roamie and the loop snaps shut, like the
+  // Drawing, shown not told: a cursor holding the talk keys circles Buddy and the loop snaps shut, like the
   // real pen. It loops while the step is open, pauses while they try talking or record a shortcut, and holds
   // still as a finished circle with reduced motion.
   const penDemo = {
@@ -788,7 +788,7 @@
       const snapped = f >= 1;
       $('pen-stroke').classList.toggle('snapped', snapped);
       // The cursor leads the ink, then drifts off after the snap; everything fades before the next go.
-      // Outward from Roamie, so the cursor and keys never cover it.
+      // Outward from Buddy, so the cursor and keys never cover it.
       const head = shown.at(-1), drift = snapped ? Math.min(1, (t - penDemo.START - penDemo.DRAW) / 1.2) : 0;
       const len = Math.hypot(head[0], head[1]) || 1, ux = head[0] / len, uy = head[1] / len;
       const cx = head[0] + ux * drift * 24, cy = head[1] + uy * drift * 24;
@@ -1162,8 +1162,8 @@
   // ---------------------------------------------------------------- flow
   // ---------------------------------------------------------------- step 0: look and size
   // Picked here, previewed on the guide right away, saved by the app (Settings has the same choices).
-  const LOOKS = [['classic', 'Roamie'], ['jarvis', 'JARVIS'], ['nocturne', 'Nocturne'], ['pip', 'Pip'], ['miko', 'Miko'], ['cloud', 'Cloud']], SIZES = [['default', 'Default'], ['small', 'Small'], ['cursor', 'Cursor']];
-  const LOOK_QUIPS = { classic: 'Classic me!', jarvis: 'At your service.', nocturne: 'The night shift is open.', pip: 'Hi there!', miko: 'Hiya!', cloud: 'Good to see you!' }, SIZE_QUIPS = { default: 'Full size!', small: 'Fun size!', cursor: 'Tiny pointer me!' };
+  const LOOKS = [['classic', 'Buddy'], ['jarvis', 'JARVIS'], ['nocturne', 'Nocturne'], ['pip', 'Pip'], ['miko', 'Miko'], ['cloud', 'Cloud']], SIZES = [['default', 'Default'], ['small', 'Small'], ['cursor', 'Cursor']];
+  const LOOK_QUIPS = { classic: 'Your original buddy!', jarvis: 'At your service.', nocturne: 'The night shift is open.', pip: 'Hi there!', miko: 'Hiya!', cloud: 'Good to see you!' }, SIZE_QUIPS = { default: 'Full size!', small: 'Fun size!', cursor: 'Tiny pointer me!' };
   const look = {
     radios(id, list, value, pickIt) {
       $(id).replaceChildren(...list.map(([v, label]) => {
@@ -1405,7 +1405,7 @@
         // A canned chat: &chat=nomodel previews not being signed in.
         if (q.get('chat') === 'nomodel') return reply({ kind: 'chat_state', status: 'no_model' }, 300);
         const turns = [
-          ["[wave] Hi Ken, I'm Roamie! I'm here to help you get things done and keep you on track. I've got four quick questions.", 'What are you working on these days?', ''],
+          ["[wave] Hi! I'm Buddy, and I'm here to help you get things done and keep you on track. I've got four quick questions.", 'What are you working on these days?', ''],
           ['Night shifts and NP exam prep, that is a lot to juggle.', 'What does a normal week look like for you?', 'Could be the hospital, flashcards in Anki, or something else entirely.'],
           ['Phone, Anki and Google Docs, a tight little setup.', "What's the actual thing you're going for right now?", 'Could be passing the boards, a new role, or something else entirely.'],
           ['Passing the boards in March, love it.', 'Okay, last one: have you used AI helpers before?', ''],

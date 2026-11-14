@@ -341,7 +341,7 @@ fn portal_screenshot() -> Result<PathBuf, String> {
     file_uri_path(uri).ok_or_else(|| "the portal sent a link that isn't a file".to_string())
 }
 
-/// Overlays go clear for a moment so the Roamie isn't in its own screenshot (macOS and Windows leave them out of
+/// Overlays go clear for a moment so Buddy isn't in his own screenshot (macOS and Windows leave them out of
 /// captures instead). Main thread only.
 fn fade_overlays(app: &AppHandle, opacity: f64) {
     use gtk::prelude::WidgetExt;

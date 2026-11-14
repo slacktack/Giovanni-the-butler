@@ -70,7 +70,7 @@ html, body { height: 100%; background: transparent; }
 /* ---------- header: who, and what it's doing right now ---------- */
 .head { display: flex; align-items: center; gap: 8px; padding: 6px var(--gut) 6px 4px; }
 .head-text { min-width: 0; flex: 1; display: grid; }
-/* The Roamie stands on a small LED pad, like the setup guide's. */
+/* Buddy stands on a small LED pad, like the setup guide's. */
 .avatar { flex: none; width: 100px; height: 74px; image-rendering: pixelated; margin-inline-end: -10px; background: radial-gradient(closest-side, rgba(43, 217, 74, 0.10), transparent) 50% 92% / 70% 22% no-repeat; }
 /* Something it says (a new look, an update; not the setup guide's .quip bubble): in the status line's place for a moment, typed in its own font. */
 .head-text .by, .head-text .saying { grid-area: 2 / 1; }
