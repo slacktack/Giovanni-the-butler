@@ -18,11 +18,11 @@
     "test:live": "node bench/memory.mjs"
   },
   "dependencies": {
-    "@anthropic-ai/claude-agent-sdk": "0.3.323",
-    "@kenkaiiii/gg-agent": "5.100.1",
-    "@kenkaiiii/gg-ai": "5.100.1",
-    "@kenkaiiii/gg-core": "5.100.1",
-    "@kenkaiiii/ggcoder": "5.100.1",
+    "@anthropic-ai/claude-agent-sdk": "0.3.327",
+    "@kenkaiiii/gg-agent": "5.104.0",
+    "@kenkaiiii/gg-ai": "5.104.0",
+    "@kenkaiiii/gg-core": "5.104.0",
+    "@kenkaiiii/ggcoder": "5.104.0",
     "zod": "4.6.7"
   },
   "devDependencies": {
